@@ -1,0 +1,44 @@
+
+{{!-- IN CASE NO POSTS --}}
+{{#if noposts}} 
+<div class="container container-fluid m-3 bordered">
+  <div  class="row form-cont">
+    <div class="col">
+      Add a Post.
+    </div>
+  </div>
+  <div class="row secondary-cont">
+    <div class="  col">
+       <form action="">
+        <input type="text" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{{else}}
+{{!-- IF THERE ARE POSTS --}}
+  {{#each posts as |post|}}
+
+  <div id="{{id}}"   class="container container-fluid m-5 post bordered">
+    <div  class="row generic-cont">
+      <div class="col">
+        {{title}}
+      </div>
+      <div class="col text-end">
+        Posted on {{format_date date_created}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+{{/if }}
+
+{{!-- Event Handling, don't be grump I did this here --}}
+<script>
+  
+  const posts = document.querySelectorAll(".post");
+  posts.forEach((post) => post.addEventListener("click", () => {
+   window.location.href = `/posts/${post.getAttribute("id")}`
+  }))
+</script>
+
