@@ -1,0 +1,25 @@
+
+<div class="container container-fluid m-3 post bordered">
+  <div  class="row generic-cont">
+    <div class="col">
+      Login
+    </div>
+  </div>
+  <div class="row secondary-cont">
+    <div class="col">
+     <form id="login">
+      <input type="email" id="email" />
+      <input type="password" id="password">
+      <button type="submit">Submit</button>
+     </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("login").addEventListener("submit", (event) => logIn(event));
+    });
+
+</script>

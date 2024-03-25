@@ -1,0 +1,73 @@
+
+<div id="{{post.id}}" class="container container-fluid m-3 post bordered">
+  <div  class="row generic-cont">
+    <div class="col">
+      {{post.title}}
+    </div>
+    <div class="col text-end">
+      Posted by {{ post.user.name}} on {{format_date post.date_created}}
+    </div>
+  </div>
+  <div class="row secondary-cont">
+    <div class="col">
+      {{post.content}}
+    </div>
+  </div>
+</div>
+{{#if editPriviledges}}
+<div class="container container-fluid m-3">
+  <div class="row">
+    <button onclick="editPost()">EDIT</button>
+  </div>
+   <div class="row">
+    <button onclick="deletePost()">DELETE</button>
+  </div>
+</div>
+{{/if}}
+
+
+{{!-- COMMENT CONTAINER --}}
+{{#each comments as |comment|}}
+<div id="{{comment.id}}" class="container container-fluid m-3 bordered">
+  <div  class="row form-cont">
+    <div class="col">
+      PLACEHOLDER
+    </div>
+  </div>
+  <div class="row secondary-cont">
+    <div class="col">
+      {{ content }}
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col text-end">
+     Posted by {{ comment.user.name }} on the {{ format_date date_created }}
+    </div>
+    
+  </div>
+</div>
+{{/each}}
+<div id="" class="container container-fluid m-3 bordered">
+  <div  class="row form-cont">
+    <div class="col">
+      PLACEHOLDER
+    </div>
+  </div>
+  <div class="row secondary-cont">
+    <div class="col">
+      Comment
+       <form id="addComment">
+        <input type="text" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("addComment").addEventListener("submit", (event) => addComment(event));
+    });
+        
+</script>
