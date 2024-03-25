@@ -2,18 +2,20 @@
 <div class="container container-fluid m-3 post bordered">
   <div  class="row generic-cont">
     <div class="col">
-      Login
+      Signup
     </div>
   </div>
   <div class="row secondary-cont">
     <div class="col">
-     <form id="login">
+     <form id="signup">
+       Name
+      <input type="text" id="name" />
       Email
       <input type="email" id="email" />
       Password
       <input type="password" id="password">
-      <button type="submit">Submit</button>
-      <a href="/signup">Sign up</a>
+      <button type="submit">Sign Me Up!</button>
+
      </form>
     </div>
   </div>
@@ -22,7 +24,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("login").addEventListener("submit", (event) => logIn(event));
+        document.getElementById("signup").addEventListener("submit", (event) => signUp(event));
     });
 
 </script>

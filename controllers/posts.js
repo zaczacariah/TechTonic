@@ -6,6 +6,10 @@ router.get('/', async (req, res) => {
     res.redirect('/');
 })
 
+router.get('/new', async(req, res) => {
+
+    res.render('new-post');
+})
 
 router.get('/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
@@ -37,6 +41,8 @@ router.get('/:id', async (req, res) => {
     }
     res.render('post', { post, comments: post.comments, editPriviledges });
 });
+
+
 
 
 module.exports = router;

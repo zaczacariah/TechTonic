@@ -1,0 +1,32 @@
+
+<div class="container container-fluid m-3 post bordered">
+    <div  class="row generic-cont">
+      <div class="col">
+        Create New Post
+      </div>
+    </div>
+    <div class="row secondary-cont">
+      <div class="col">
+        <form class="normalForm" id="createPost">
+          <div class="inputs">
+            Title
+            <input type="text" id="postTitle" />
+            Content
+            <textarea  id="postContent"></textarea>
+          </div>
+          <div class="buttons">
+          <button type="submit">Create Post</button>
+         
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("createPost").addEventListener("submit", (event) => createPost(event));
+    });
+        
+</script>
