@@ -10,7 +10,7 @@ const withAuth = require('../utils/auth');
 // When a request is made to the /api route, it will be directed to the index.js in the 'api' folder.
 router.use('/api', apiRoutes);
 
-router.use('/dashboard', dashboardRoutes)
+router.use('/dashboard', withAuth, dashboardRoutes)
 router.use('/posts', withAuth, postsRoutes)
 router.use('/', homeRoutes);
 

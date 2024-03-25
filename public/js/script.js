@@ -48,6 +48,42 @@ async function logIn(event){
     }
 }
 
+async function signUp(event){
+    event.preventDefault();
+    const name = event.target[0].value || false;
+    const email = event.target[1].value || false;
+    const password = event.target[2].value || false;
+
+    if(!email || !password || !name){
+       console.log("Enter name, email or password to create account")
+       return;
+    }
+
+    try {
+        const response = await fetch('/api/user/', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                password
+            })
+        });
+
+        if(response.status === 200){
+            window.location.href = '/login';
+        } else {
+            console.log(response);
+        }
+
+    
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 async function addComment(event){
     event.preventDefault();
@@ -76,8 +112,76 @@ async function addComment(event){
 
 }
 
-async function editPost(){
 
+async function createPost(event){
+    event.preventDefault();
+
+    const title = event.target[0].value || false;
+    const content = event.target[1].value || false;
+    
+    if(!title || !content){
+        console.log("Enter Content to create otherwise delete")
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/posts', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title,
+                content
+            })
+        })
+
+        if(response.status === 201){
+            window.location.href = "/dashboard"
+            return;
+        } else {
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+async function editPost({ event, post_id}){
+    event.preventDefault();
+    post_id = post_id || false;
+    const title = event.target[0].value || false;
+    const content = event.target[1].value || false;
+
+    if(!title || !content || !post_id){
+       console.log("Enter Content to update otherwise delete")
+       return;
+    }
+
+    try {
+        const response = await fetch('/api/posts', {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: post_id,
+                title,
+                content
+            })
+        })
+
+        if(response.status === 202){
+            window.location.href = "/dashboard"
+            return;
+        } else {
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
 
 async function deletePost() {

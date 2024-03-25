@@ -10,7 +10,7 @@
 
 html{
     background-color: var(--primary-color);
-    font-family: var(--primary-font);
+    font-family: var(--primary-font)!important  ;
     font-size: 16px;
     color: #000;
     line-height: 1.6;
@@ -123,4 +123,91 @@ form>*{
     width: 100%;
 }
 
+form>button{
+    width:100%;
+    margin-top:3px;
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    color: var(--primary-color);
+    background: var(--secondary-color);
+}
 
+form>a{
+    text-decoration: none;
+}
+
+form#editPost {
+    width:100%;
+}
+
+form#editPost .inputs>*{
+    margin-top:10px;
+    margin-bottom: 10px;
+    width:100%;
+    border-radius:5px;
+    border: 1px solid black;
+    padding:5px;
+    font-family: var(--primary-font);
+    font-weight: 550;
+}
+
+form#editPost .inputs>#postContent{
+    width:100%;
+}
+
+form#editPost .buttons>*{
+    width:100%;
+    margin-top:3px;
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    color: var(--primary-color);
+    background: var(--secondary-color);
+}
+
+form#editPost .buttons>button:hover{
+    background: var(--tertiary-color);
+}
+
+.newPost{
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    padding:10px;
+    border-radius: 5px;
+    margin:auto;
+}
+
+
+form.normalForm {
+    width:100%;
+}
+
+form.normalForm .inputs>*{
+    margin-top:10px;
+    margin-bottom: 10px;
+    width:100%;
+    border-radius:5px;
+    border: 1px solid black;
+    padding:5px;
+    font-family: var(--primary-font);
+    font-weight: 550;
+}
+
+form.normalForm .inputs>#postContent{
+    width:100%;
+}
+
+form.normalForm .buttons>*{
+    width:100%;
+    margin-top:3px;
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    color: var(--primary-color);
+    background: var(--secondary-color);
+}
+
+form.normalForm .buttons>button:hover{
+    background: var(--tertiary-color);
+}

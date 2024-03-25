@@ -1,28 +1,44 @@
 
-<div id="{{post.id}}" class="container container-fluid m-3 post bordered">
-  <div  class="row generic-cont">
-    <div class="col">
-      {{post.title}}
+{{#unless editPriviledges}}
+  <div id="{{post.id}}" class="container container-fluid m-3 post bordered">
+    <div  class="row generic-cont">
+      <div class="col">
+        {{post.title}}
+      </div>
+      <div class="col text-end">
+        Posted by {{ post.user.name}} on {{format_date post.date_created}}
+      </div>
     </div>
-    <div class="col text-end">
-      Posted by {{ post.user.name}} on {{format_date post.date_created}}
+    <div class="row secondary-cont">
+      <div class="col">
+        {{post.content}}
+      </div>
     </div>
   </div>
-  <div class="row secondary-cont">
-    <div class="col">
-      {{post.content}}
-    </div>
-  </div>
-</div>
+{{/unless}}
 {{#if editPriviledges}}
-<div class="container container-fluid m-3">
-  <div class="row">
-    <button onclick="editPost()">EDIT</button>
+<div id="{{post.id}}" class="container container-fluid m-3 post bordered">
+    <div  class="row generic-cont">
+      <div class="col">
+        Edit Post
+      </div>
+    </div>
+    <div class="row secondary-cont">
+      <div class="col">
+        <form id="editPost">
+          <div class="inputs">
+            <input type="text" id="postTitle" />
+            <textarea  id="postContent"></textarea>
+          </div>
+          <div class="buttons">
+          <button type="submit">UPDATE</button>
+          <button onclick="deletePost()">DELETE</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-   <div class="row">
-    <button onclick="deletePost()">DELETE</button>
-  </div>
-</div>
+
 {{/if}}
 
 
@@ -48,6 +64,7 @@
   </div>
 </div>
 {{/each}}
+
 <div id="" class="container container-fluid m-3 bordered">
   <div  class="row form-cont">
     <div class="col">
@@ -66,8 +83,16 @@
 </div>
 
 <script>
+    
     document.addEventListener("DOMContentLoaded", function() {
+      const post_id = {{post.id}};
+      {{#if editPriviledges}}
+        document.getElementById("postContent").value = "{{post.content}}";
+        document.getElementById("postTitle").value = "{{post.title}}";
+         document.getElementById("editPost").addEventListener("submit", (event) => editPost({ event, post_id }));
+        {{/if}}
         document.getElementById("addComment").addEventListener("submit", (event) => addComment(event));
+       
     });
         
 </script>
