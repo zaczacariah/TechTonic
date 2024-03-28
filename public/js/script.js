@@ -1,4 +1,4 @@
-
+// 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("logout-button").addEventListener("click", async () => {
         const loggedInStatus = await fetch('/api/user/logout', {

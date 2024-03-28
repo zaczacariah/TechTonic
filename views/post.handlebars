@@ -1,4 +1,5 @@
 
+{{!-- If foriegn post --}}
 {{#unless editPriviledges}}
   <div id="{{post.id}}" class="container container-fluid m-3 post bordered">
     <div  class="row generic-cont">
@@ -16,6 +17,7 @@
     </div>
   </div>
 {{/unless}}
+{{!-- If User logged in post this post --}}
 {{#if editPriviledges}}
 <div id="{{post.id}}" class="container container-fluid m-3 post bordered">
     <div  class="row generic-cont">
@@ -87,6 +89,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       const post_id = {{post.id}};
       {{#if editPriviledges}}
+      {{!-- THe folllowing code runs if post is published by current user --}}
         document.getElementById("postContent").value = "{{post.content}}";
         document.getElementById("postTitle").value = "{{post.title}}";
          document.getElementById("editPost").addEventListener("submit", (event) => editPost({ event, post_id }));
